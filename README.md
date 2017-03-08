@@ -34,6 +34,7 @@ _**Contents**_
       * [Googletest Integration](#googletest-integration)
       * [Javascript Decoder](#javascript-decoder)
     * [Android Studio Project Integration](#android-studio-project-integration)
+    * [Java Encoder](#Java Encoder)
   * [Usage](#usage)
     * [Command Line Applications](#command-line-applications)
     * [Encoding Tool](#encoding-tool)
@@ -212,6 +213,46 @@ version of 18 or higher. To add Draco to your project:
                             # included in the NDK.
                             ${log-lib} )
      ~~~~~
+
+
+Java Encoder
+------------
+Invoke C/C++ use JNI/JNA
+
+```xml
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>4.3.0</version>
+        </dependency>
+```
+
+Use `CMake` can get `libmsmk_compress.so`
+
+Invoke example for Java:
+```java
+import com.sun.jna.Library;
+import com.sun.jna.Native;
+import com.sun.jna.Platform;
+
+
+public class Client {
+
+    public interface CLibrary extends Library {
+        CLibrary INSTANCE = (CLibrary) Native.loadLibrary((Platform.isWindows() ? "msmk_compress" : "msmk_compress"), CLibrary.class);
+
+        int add(int a,int b);
+        int compress(String input,String output);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(CLibrary.INSTANCE.add(2,100));
+        System.out.println(CLibrary.INSTANCE.compress("/home/zzz/workspaceCLion/draco/testdata/two_faces_123.obj","/home/zzz/workspaceCLion/draco/testdata/nb.zzz"));
+
+    }
+
+}
+```
 
 Usage
 ======
