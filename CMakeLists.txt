@@ -523,6 +523,30 @@ else ()
               $<TARGET_OBJECTS:draco_points_decoder>
               $<TARGET_OBJECTS:draco_points_encoder>)
 
+  add_library(msmk_compress SHARED
+          ${draco_compression_attributes_decoder_sources}
+          ${draco_compression_attributes_encoder_sources}
+          ${draco_compression_attributes_pred_schemes_sources}
+          ${draco_compression_config_sources}
+          ${draco_compression_decode_sources}
+          ${draco_compression_encode_sources}
+          ${draco_compression_mesh_decoder_sources}
+          ${draco_compression_mesh_encoder_sources}
+          ${draco_compression_point_cloud_decoder_sources}
+          ${draco_compression_point_cloud_encoder_sources}
+          ${draco_core_sources}
+          ${draco_io_sources}
+          ${draco_mesh_sources}
+          ${draco_point_cloud_sources}
+          ${draco_points_decoder_sources}
+          ${draco_points_encoder_sources}
+          ${draco_root}/tools/testzzz.cc
+          ${draco_root}/tools/testzzz.h
+          )
+
+  add_executable(testzzze "${draco_root}/tools/testzzz.cc")
+  target_link_libraries(testzzze PUBLIC msmk_compress)
+
   # Draco app targets.
   add_executable(draco_decoder "${draco_root}/tools/draco_decoder.cc")
   target_link_libraries(draco_decoder PUBLIC dracodec)
