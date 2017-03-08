@@ -34,7 +34,7 @@ _**Contents**_
       * [Googletest Integration](#googletest-integration)
       * [Javascript Decoder](#javascript-decoder)
     * [Android Studio Project Integration](#android-studio-project-integration)
-    * [Java Encoder](#Java Encoder)
+    * [Java Encoder](#java-encoder)
   * [Usage](#usage)
     * [Command Line Applications](#command-line-applications)
     * [Encoding Tool](#encoding-tool)
